@@ -1,5 +1,6 @@
 import { launchBrowser } from './pageSettings.js';
 import { expect } from 'chai';
+import chalk from 'chalk';
 
 
 /*
@@ -17,7 +18,7 @@ async function testButtonClick(page) {
     // Wait for the next step in the funnel to be visible
     await page.waitForSelector('#subs-001-main', { visible: true });
 
-    console.log('Funnel is on the first step');
+    console.log(chalk.green('1. Funnel is on the first step √'));
 }
 
 /*
@@ -32,7 +33,7 @@ async function testHeroSectionText(page) {
     // Assert the text is as expected
     expect(text).to.equal('Start your subscription today');
 
-    console.log('Assertion passed: for text!');
+    console.log(chalk.green('2. Assertion passed: for text! √'));
 }
 
 
@@ -43,6 +44,7 @@ async function testHeroSectionText(page) {
         browser = launched.browser; 
         const page = launched.page;
 
+        console.log(chalk.white('Testing Hero Section \n'));
        // Run individual test functions
        await testButtonClick(page);
        await testHeroSectionText(page);
